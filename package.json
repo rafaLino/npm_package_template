@@ -1,0 +1,51 @@
+{
+  "name": "npm_package_template",
+  "version": "1.0.0",
+  "description": "A template package",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsup",
+    "ci": "npm run build && npm run check-format && npm run check-exports && npm run lint && npm run test",
+    "format": "prettier --write .",
+    "check-format": "prettier --check .",
+    "check-exports": "attw --pack .",
+    "lint": "tsc",
+    "test": "vitest run",
+    "dev": "vitest",
+    "local-release": "changeset version && changeset publish",
+    "prepublishOnly": "npm run ci"
+  },
+  "exports": {
+    "./package.json": "./package.json",
+    ".": {
+      "import": "./dist/index.js",
+      "default": "./dist/index.cjs"
+    }
+  },
+  "keywords": [
+    "demo",
+    "typescript"
+  ],
+  "homepage": "https://github.com/rafaLino/npm_package_template",
+  "bugs": {
+    "url": "https://github.com/rafaLino/npm_package_template/issues"
+  },
+  "author": "Rafa Lino",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rafaLino/npm_package_template.git"
+  },
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "license": "MIT",
+  "devDependencies": {
+    "@arethetypeswrong/cli": "^0.15.4",
+    "@changesets/cli": "^2.27.7",
+    "prettier": "^3.3.3",
+    "tsup": "^8.2.4",
+    "typescript": "^5.5.4",
+    "vitest": "^2.0.5"
+  }
+}
